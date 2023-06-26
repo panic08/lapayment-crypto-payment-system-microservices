@@ -2,6 +2,7 @@ package ru.panic.authservice.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -15,7 +16,8 @@ public class WebSecurityConfiguration extends org.springframework.security.confi
         return httpSecurity
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests((requests) -> requests
-                        .anyRequest().permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/auth/**").permitAll()
+                        .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())
                 .build();

@@ -8,8 +8,7 @@ import ru.panic.authservice.template.entity.Client;
 import ru.panic.authservice.template.service.impl.AuthServiceImpl;
 
 @RestController
-@RequestMapping("/api")
-@CrossOrigin(origins = "*")
+@RequestMapping("/api/auth")
 public class AuthController {
     public AuthController(AuthServiceImpl authService) {
         this.authService = authService;

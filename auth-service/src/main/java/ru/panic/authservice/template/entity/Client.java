@@ -22,8 +22,6 @@ public class Client implements UserDetails {
     private Boolean isAccountNonLocked;
     private Long registeredAt;
 
-
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
