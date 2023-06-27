@@ -25,6 +25,7 @@ public class ClientRepositoryImpl implements ru.panic.authservice.template.repos
                 .set(ClientsTable.CLIENTS_TABLE.MATIC_BALANCE, client.getMatic_balance())
                 .set(ClientsTable.CLIENTS_TABLE.XRP_BALANCE, client.getXrp_balance())
                 .set(ClientsTable.CLIENTS_TABLE.TETHERERC20_BALANCE, client.getTetherERC20_balance())
+                .set(ClientsTable.CLIENTS_TABLE.REGISTEREDAT, client.getRegisteredAt())
                 .execute();
     }
 

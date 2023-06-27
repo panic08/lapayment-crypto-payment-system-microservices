@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import ru.panic.paymentservice.template.bunny.NetworkBunny;
+import ru.panic.paymentservice.template.dto.PaymentMessage;
 import ru.panic.paymentservice.template.dto.PaymentRequest;
 import ru.panic.paymentservice.template.dto.PaymentResponse;
 import ru.panic.paymentservice.template.dto.crypto.*;
@@ -99,11 +100,20 @@ public class PaymentServiceImpl implements PaymentService {
                             if(input.getPrev_out().getValue()/1e8 == paymentResponse.getAmount()
                                     && tx.getTime() > currentTime
                             ){
-                                paymentResponse.setWalletId(input.getPrev_out().getAddr());
+
+                                PaymentMessage paymentMessage = new PaymentMessage();
+                                paymentMessage.setCompanyName(request.getCompanyName());
+                                paymentMessage.setAmount(paymentResponse.getAmount());
+                                paymentMessage.setCurrency(CryptoCurrency.BTC);
+                                paymentMessage.setWalletId(input.getPrev_out().getAddr());
+                                paymentMessage.setIpAddress(request.getIpAddress());
+                                paymentMessage.setO(request.getO());
+                                paymentMessage.setTimestamp(System.currentTimeMillis());
+
                                 ObjectMapper objectMapper = new ObjectMapper();
                                 String jsonString;
                                 try {
-                                    jsonString = objectMapper.writeValueAsString(paymentResponse);
+                                    jsonString = objectMapper.writeValueAsString(paymentMessage);
                                 } catch (JsonProcessingException e) {
                                     throw new RuntimeException(e);
                                 }
@@ -196,12 +206,20 @@ public class PaymentServiceImpl implements PaymentService {
                                 &&
                                 Long.parseLong(transactionDto.getTimeStamp()) > currentTime
                         ){
-                            paymentResponse.setWalletId(transactionDto.getFrom());
+
+                            PaymentMessage paymentMessage = new PaymentMessage();
+                            paymentMessage.setCompanyName(request.getCompanyName());
+                            paymentMessage.setAmount(paymentResponse.getAmount());
+                            paymentMessage.setCurrency(CryptoCurrency.ETH);
+                            paymentMessage.setWalletId(transactionDto.getFrom());
+                            paymentMessage.setIpAddress(request.getIpAddress());
+                            paymentMessage.setO(request.getO());
+                            paymentMessage.setTimestamp(System.currentTimeMillis());
 
                             ObjectMapper objectMapper = new ObjectMapper();
                             String jsonString;
                             try {
-                                jsonString = objectMapper.writeValueAsString(paymentResponse);
+                                jsonString = objectMapper.writeValueAsString(paymentMessage);
                             } catch (JsonProcessingException e) {
                                 throw new RuntimeException(e);
                             }
@@ -287,12 +305,20 @@ public class PaymentServiceImpl implements PaymentService {
                     for (LitecoinProviderResponse.ReplenishmentDto replenishment : liteCoinResponseDto.getBody().getReplenishments()) {
                         for (LitecoinProviderResponse.ReplenishmentDto.InputDto input : replenishment.getInputs()) {
                             if(Double.parseDouble(input.getCoin().getValue()) == paymentResponse.getAmount() && replenishment.getTime() > currentTime){
-                                paymentResponse.setWalletId(input.getCoin().getAddress());
+
+                                PaymentMessage paymentMessage = new PaymentMessage();
+                                paymentMessage.setCompanyName(request.getCompanyName());
+                                paymentMessage.setAmount(paymentResponse.getAmount());
+                                paymentMessage.setCurrency(CryptoCurrency.LTC);
+                                paymentMessage.setWalletId(input.getCoin().getAddress());
+                                paymentMessage.setIpAddress(request.getIpAddress());
+                                paymentMessage.setO(request.getO());
+                                paymentMessage.setTimestamp(System.currentTimeMillis());
 
                                 ObjectMapper objectMapper = new ObjectMapper();
                                 String jsonString;
                                 try {
-                                    jsonString = objectMapper.writeValueAsString(paymentResponse);
+                                    jsonString = objectMapper.writeValueAsString(paymentMessage);
                                 } catch (JsonProcessingException e) {
                                     throw new RuntimeException(e);
                                 }
@@ -382,12 +408,20 @@ public class PaymentServiceImpl implements PaymentService {
                         for (TronProviderResponse.Contract contract : datum.getRaw_data().getContract()) {
                             if (contract.getParameter().getValue().getAmount()/1e6 == paymentResponse.getAmount() &&
                                     datum.getRaw_data().getTimestamp() > currentTime){
-                                paymentResponse.setWalletId(contract.getParameter().getValue().getOwner_address());
+
+                                PaymentMessage paymentMessage = new PaymentMessage();
+                                paymentMessage.setCompanyName(request.getCompanyName());
+                                paymentMessage.setAmount(paymentResponse.getAmount());
+                                paymentMessage.setCurrency(CryptoCurrency.TRX);
+                                paymentMessage.setWalletId(contract.getParameter().getValue().getOwner_address());
+                                paymentMessage.setIpAddress(request.getIpAddress());
+                                paymentMessage.setO(request.getO());
+                                paymentMessage.setTimestamp(System.currentTimeMillis());
 
                                 ObjectMapper objectMapper = new ObjectMapper();
                                 String jsonString;
                                 try {
-                                    jsonString = objectMapper.writeValueAsString(paymentResponse);
+                                    jsonString = objectMapper.writeValueAsString(paymentMessage);
                                 } catch (JsonProcessingException e) {
                                     throw new RuntimeException(e);
                                 }
@@ -483,12 +517,20 @@ public class PaymentServiceImpl implements PaymentService {
                                 &&
                                 resultDTO.getUtime() > currentTime
                         ){
-                            paymentResponse.setWalletId(resultDTO.getIn_msg().getSource());
+
+                            PaymentMessage paymentMessage = new PaymentMessage();
+                            paymentMessage.setCompanyName(request.getCompanyName());
+                            paymentMessage.setAmount(paymentResponse.getAmount());
+                            paymentMessage.setCurrency(CryptoCurrency.TON);
+                            paymentMessage.setWalletId(resultDTO.getIn_msg().getSource());
+                            paymentMessage.setIpAddress(request.getIpAddress());
+                            paymentMessage.setO(request.getO());
+                            paymentMessage.setTimestamp(System.currentTimeMillis());
 
                             ObjectMapper objectMapper = new ObjectMapper();
                             String jsonString;
                             try {
-                                jsonString = objectMapper.writeValueAsString(paymentResponse);
+                                jsonString = objectMapper.writeValueAsString(paymentMessage);
                             } catch (JsonProcessingException e) {
                                 throw new RuntimeException(e);
                             }
@@ -577,12 +619,20 @@ public class PaymentServiceImpl implements PaymentService {
                                 &&
                                 responseDto.getTimestamp() > currentTime
                         ){
-                            paymentResponse.setWalletId(responseDto.getFrom());
+
+                            PaymentMessage paymentMessage = new PaymentMessage();
+                            paymentMessage.setCompanyName(request.getCompanyName());
+                            paymentMessage.setAmount(paymentResponse.getAmount());
+                            paymentMessage.setCurrency(CryptoCurrency.MATIC);
+                            paymentMessage.setWalletId(responseDto.getFrom());
+                            paymentMessage.setIpAddress(request.getIpAddress());
+                            paymentMessage.setO(request.getO());
+                            paymentMessage.setTimestamp(System.currentTimeMillis());
 
                             ObjectMapper objectMapper = new ObjectMapper();
                             String jsonString;
                             try {
-                                jsonString = objectMapper.writeValueAsString(paymentResponse);
+                                jsonString = objectMapper.writeValueAsString(paymentMessage);
                             } catch (JsonProcessingException e) {
                                 throw new RuntimeException(e);
                             }
@@ -660,9 +710,9 @@ public class PaymentServiceImpl implements PaymentService {
             long currentTime = System.currentTimeMillis();
             TimerTask task = new TimerTask() {
                 int counter = 0;
-                XrpAccountTxRequest request = new XrpAccountTxRequest(networkBunny.getXrpWallet(), 5);
+                XrpAccountTxRequest request1 = new XrpAccountTxRequest(networkBunny.getXrpWallet(), 5);
                 HttpHeaders headers = new HttpHeaders();
-                HttpEntity<XrpAccountTxRequest> entity = new HttpEntity<>(request, headers);
+                HttpEntity<XrpAccountTxRequest> entity = new HttpEntity<>(request1, headers);
                 public void run() {
 
                     ResponseEntity<RippleProviderResponse> xrpResponseDto = restTemplate
@@ -678,12 +728,21 @@ public class PaymentServiceImpl implements PaymentService {
                                 &&
                                 transaction.getTx().getDate()+946684800L > currentTime
                         ){
-                            paymentResponse.setWalletId(transaction.getTx().getAccount());
+
+                            PaymentMessage paymentMessage = new PaymentMessage();
+                            paymentMessage.setCompanyName(request.getCompanyName());
+                            paymentMessage.setAmount(paymentResponse.getAmount());
+                            paymentMessage.setCurrency(CryptoCurrency.XRP);
+                            paymentMessage.setWalletId(transaction.getTx().getAccount());
+                            paymentMessage.setIpAddress(request.getIpAddress());
+                            paymentMessage.setO(request.getO());
+                            paymentMessage.setTimestamp(System.currentTimeMillis());
+
 
                             ObjectMapper objectMapper = new ObjectMapper();
                             String jsonString;
                             try {
-                                jsonString = objectMapper.writeValueAsString(paymentResponse);
+                                jsonString = objectMapper.writeValueAsString(paymentMessage);
                             } catch (JsonProcessingException e) {
                                 throw new RuntimeException(e);
                             }
@@ -774,12 +833,20 @@ public class PaymentServiceImpl implements PaymentService {
                                 &&
                                 Long.parseLong(resultDTO.getTimeStamp()) > currentTime
                         ){
-                            paymentResponse.setWalletId(resultDTO.getFrom());
+
+                            PaymentMessage paymentMessage = new PaymentMessage();
+                            paymentMessage.setCompanyName(request.getCompanyName());
+                            paymentMessage.setAmount(paymentResponse.getAmount());
+                            paymentMessage.setCurrency(CryptoCurrency.TETHER_ERC20);
+                            paymentMessage.setWalletId(resultDTO.getFrom());
+                            paymentMessage.setIpAddress(request.getIpAddress());
+                            paymentMessage.setO(request.getO());
+                            paymentMessage.setTimestamp(System.currentTimeMillis());
 
                             ObjectMapper objectMapper = new ObjectMapper();
                             String jsonString;
                             try {
-                                jsonString = objectMapper.writeValueAsString(paymentResponse);
+                                jsonString = objectMapper.writeValueAsString(paymentMessage);
                             } catch (JsonProcessingException e) {
                                 throw new RuntimeException(e);
                             }

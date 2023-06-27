@@ -53,7 +53,7 @@ public class ClientsTable extends TableImpl<ClientsTableRecord> {
     /**
      * The column <code>public.clients_table.id</code>.
      */
-    public final TableField<ClientsTableRecord, Integer> ID = createField(DSL.name("id"), SQLDataType.INTEGER.nullable(false).identity(true), this, "");
+    public final TableField<ClientsTableRecord, Long> ID = createField(DSL.name("id"), SQLDataType.BIGINT.nullable(false).identity(true), this, "");
 
     /**
      * The column <code>public.clients_table.username</code>.
@@ -113,7 +113,7 @@ public class ClientsTable extends TableImpl<ClientsTableRecord> {
     /**
      * The column <code>public.clients_table.registeredat</code>.
      */
-    public final TableField<ClientsTableRecord, String> REGISTEREDAT = createField(DSL.name("registeredat"), SQLDataType.VARCHAR(255).nullable(false), this, "");
+    public final TableField<ClientsTableRecord, Long> REGISTEREDAT = createField(DSL.name("registeredat"), SQLDataType.BIGINT.nullable(false), this, "");
 
     private ClientsTable(Name alias, Table<ClientsTableRecord> aliased) {
         this(alias, aliased, null);
@@ -154,8 +154,8 @@ public class ClientsTable extends TableImpl<ClientsTableRecord> {
     }
 
     @Override
-    public Identity<ClientsTableRecord, Integer> getIdentity() {
-        return (Identity<ClientsTableRecord, Integer>) super.getIdentity();
+    public Identity<ClientsTableRecord, Long> getIdentity() {
+        return (Identity<ClientsTableRecord, Long>) super.getIdentity();
     }
 
     @Override
@@ -207,14 +207,14 @@ public class ClientsTable extends TableImpl<ClientsTableRecord> {
     // -------------------------------------------------------------------------
 
     @Override
-    public Row13<Integer, String, String, String, Double, Double, Double, Double, Double, Double, Double, Double, String> fieldsRow() {
+    public Row13<Long, String, String, String, Double, Double, Double, Double, Double, Double, Double, Double, Long> fieldsRow() {
         return (Row13) super.fieldsRow();
     }
 
     /**
      * Convenience mapping calling {@link SelectField#convertFrom(Function)}.
      */
-    public <U> SelectField<U> mapping(Function13<? super Integer, ? super String, ? super String, ? super String, ? super Double, ? super Double, ? super Double, ? super Double, ? super Double, ? super Double, ? super Double, ? super Double, ? super String, ? extends U> from) {
+    public <U> SelectField<U> mapping(Function13<? super Long, ? super String, ? super String, ? super String, ? super Double, ? super Double, ? super Double, ? super Double, ? super Double, ? super Double, ? super Double, ? super Double, ? super Long, ? extends U> from) {
         return convertFrom(Records.mapping(from));
     }
 
@@ -222,7 +222,7 @@ public class ClientsTable extends TableImpl<ClientsTableRecord> {
      * Convenience mapping calling {@link SelectField#convertFrom(Class,
      * Function)}.
      */
-    public <U> SelectField<U> mapping(Class<U> toType, Function13<? super Integer, ? super String, ? super String, ? super String, ? super Double, ? super Double, ? super Double, ? super Double, ? super Double, ? super Double, ? super Double, ? super Double, ? super String, ? extends U> from) {
+    public <U> SelectField<U> mapping(Class<U> toType, Function13<? super Long, ? super String, ? super String, ? super String, ? super Double, ? super Double, ? super Double, ? super Double, ? super Double, ? super Double, ? super Double, ? super Double, ? super Long, ? extends U> from) {
         return convertFrom(toType, Records.mapping(from));
     }
 }

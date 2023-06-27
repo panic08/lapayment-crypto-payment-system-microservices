@@ -12,7 +12,9 @@ import org.jooq.Table;
 import org.jooq.impl.SchemaImpl;
 
 import ru.panic.authservice.generatedClasses.tables.ClientsTable;
+import ru.panic.authservice.generatedClasses.tables.CompaniesTable;
 import ru.panic.authservice.generatedClasses.tables.FlywaySchemaHistory;
+import ru.panic.authservice.generatedClasses.tables.PaymentsTable;
 
 
 /**
@@ -34,9 +36,19 @@ public class Public extends SchemaImpl {
     public final ClientsTable CLIENTS_TABLE = ClientsTable.CLIENTS_TABLE;
 
     /**
+     * The table <code>public.companies_table</code>.
+     */
+    public final CompaniesTable COMPANIES_TABLE = CompaniesTable.COMPANIES_TABLE;
+
+    /**
      * The table <code>public.flyway_schema_history</code>.
      */
     public final FlywaySchemaHistory FLYWAY_SCHEMA_HISTORY = FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY;
+
+    /**
+     * The table <code>public.payments_table</code>.
+     */
+    public final PaymentsTable PAYMENTS_TABLE = PaymentsTable.PAYMENTS_TABLE;
 
     /**
      * No further instances allowed
@@ -55,7 +67,9 @@ public class Public extends SchemaImpl {
     public final List<Table<?>> getTables() {
         return Arrays.asList(
             ClientsTable.CLIENTS_TABLE,
-            FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY
+            CompaniesTable.COMPANIES_TABLE,
+            FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY,
+            PaymentsTable.PAYMENTS_TABLE
         );
     }
 }

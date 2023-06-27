@@ -5,7 +5,9 @@ package ru.panic.managementpaymentservice.generatedClasses;
 
 
 import ru.panic.managementpaymentservice.generatedClasses.tables.ClientsTable;
+import ru.panic.managementpaymentservice.generatedClasses.tables.CompaniesTable;
 import ru.panic.managementpaymentservice.generatedClasses.tables.FlywaySchemaHistory;
+import ru.panic.managementpaymentservice.generatedClasses.tables.PaymentsTable;
 
 
 /**
@@ -20,7 +22,17 @@ public class Tables {
     public static final ClientsTable CLIENTS_TABLE = ClientsTable.CLIENTS_TABLE;
 
     /**
+     * The table <code>public.companies_table</code>.
+     */
+    public static final CompaniesTable COMPANIES_TABLE = CompaniesTable.COMPANIES_TABLE;
+
+    /**
      * The table <code>public.flyway_schema_history</code>.
      */
     public static final FlywaySchemaHistory FLYWAY_SCHEMA_HISTORY = FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY;
+
+    /**
+     * The table <code>public.payments_table</code>.
+     */
+    public static final PaymentsTable PAYMENTS_TABLE = PaymentsTable.PAYMENTS_TABLE;
 }
