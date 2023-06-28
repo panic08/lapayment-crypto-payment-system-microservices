@@ -22,5 +22,17 @@ public class CorsConfiguration implements WebMvcConfigurer {
                 .allowedHeaders("*")
                 .allowedMethods("POST")
                 .allowedOrigins("*");
+        corsRegistry.addMapping("/api/company/create")
+                .allowedHeaders("*")
+                .allowedMethods("POST")
+                .allowedOrigins("http://localhost:3000");
+        corsRegistry.addMapping("/api/company/readByUsername")
+                .allowedHeaders("*")
+                .allowedMethods("GET")
+                .allowedOrigins("http://localhost:3000");
+        corsRegistry.addMapping("/api/company/deleteByCompanyName")
+                .allowedHeaders("*")
+                .allowedMethods("DELETE")
+                .allowedOrigins("http://localhost:3000");
     }
 }
