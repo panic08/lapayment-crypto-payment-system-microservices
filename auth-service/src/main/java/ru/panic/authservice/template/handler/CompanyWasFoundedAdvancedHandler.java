@@ -1,5 +1,6 @@
 package ru.panic.authservice.template.handler;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -9,7 +10,7 @@ import ru.panic.authservice.template.exception.CompanyWasFoundedException;
 @RestControllerAdvice
 public class CompanyWasFoundedAdvancedHandler {
     @ResponseBody
-    @ResponseStatus
+    @ResponseStatus(HttpStatus.CONFLICT)
     @ExceptionHandler(CompanyWasFoundedException.class)
     private String handleCompanyWasFoundedException(CompanyWasFoundedException companyWasFoundedException){
         return companyWasFoundedException.getMessage();
