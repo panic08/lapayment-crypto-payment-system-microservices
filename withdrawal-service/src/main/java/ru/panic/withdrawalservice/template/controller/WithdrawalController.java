@@ -32,6 +32,6 @@ public class WithdrawalController {
             @RequestHeader String jwtToken,
             @RequestBody Withdrawal withdrawal
     ){
-
+        withdrawalService.deleteWithdrawal(jwtToken, withdrawal);
     }
 }
