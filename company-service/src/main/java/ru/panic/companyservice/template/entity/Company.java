@@ -1,4 +1,4 @@
-package ru.panic.managementpaymentservice.template.entity;
+package ru.panic.companyservice.template.entity;
 
 import lombok.Getter;
 import lombok.Setter;
