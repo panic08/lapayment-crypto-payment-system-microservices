@@ -8,6 +8,8 @@
         <option value="$PROJECT_DIR$/payment-service/pom.xml" />
         <option value="$PROJECT_DIR$/management-payment-service/pom.xml" />
         <option value="$PROJECT_DIR$/withdrawal-service/pom.xml" />
+        <option value="$PROJECT_DIR$/management-withdrawal-service/pom.xml" />
+        <option value="$PROJECT_DIR$/company-service/pom.xml" />
       </list>
     </option>
   </component>

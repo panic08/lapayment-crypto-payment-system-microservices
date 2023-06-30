@@ -6,6 +6,7 @@ import ru.panic.withdrawalservice.template.enums.CryptoCurrency;
 @Getter
 @Setter
 public class Withdrawal {
+    private Long id;
     private String clientUsername;
     private Double amount;
     private CryptoCurrency currency;

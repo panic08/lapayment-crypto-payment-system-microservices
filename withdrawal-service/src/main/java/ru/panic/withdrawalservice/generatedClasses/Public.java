@@ -15,6 +15,7 @@ import ru.panic.withdrawalservice.generatedClasses.tables.ClientsTable;
 import ru.panic.withdrawalservice.generatedClasses.tables.CompaniesTable;
 import ru.panic.withdrawalservice.generatedClasses.tables.FlywaySchemaHistory;
 import ru.panic.withdrawalservice.generatedClasses.tables.PaymentsTable;
+import ru.panic.withdrawalservice.generatedClasses.tables.WithdrawalsTable;
 
 
 /**
@@ -51,6 +52,11 @@ public class Public extends SchemaImpl {
     public final PaymentsTable PAYMENTS_TABLE = PaymentsTable.PAYMENTS_TABLE;
 
     /**
+     * The table <code>public.withdrawals_table</code>.
+     */
+    public final WithdrawalsTable WITHDRAWALS_TABLE = WithdrawalsTable.WITHDRAWALS_TABLE;
+
+    /**
      * No further instances allowed
      */
     private Public() {
@@ -69,7 +75,8 @@ public class Public extends SchemaImpl {
             ClientsTable.CLIENTS_TABLE,
             CompaniesTable.COMPANIES_TABLE,
             FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY,
-            PaymentsTable.PAYMENTS_TABLE
+            PaymentsTable.PAYMENTS_TABLE,
+            WithdrawalsTable.WITHDRAWALS_TABLE
         );
     }
 }

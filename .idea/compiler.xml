@@ -11,13 +11,17 @@
         <module name="management-payment-service" />
         <module name="auth-service" />
         <module name="payment-service" />
+        <module name="company-service" />
+        <module name="management-withdrawal-service" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="auth-service" options="-parameters" />
+      <module name="company-service" options="-parameters" />
       <module name="management-payment-service" options="-parameters" />
+      <module name="management-withdrawal-service" options="-parameters" />
       <module name="payment-service" options="-parameters" />
       <module name="withdrawal-service" options="-parameters" />
     </option>

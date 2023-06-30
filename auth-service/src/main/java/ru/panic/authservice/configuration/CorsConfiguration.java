@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableWebMvc
 public class CorsConfiguration implements WebMvcConfigurer {
     @Override
-    public void addCorsMappings(CorsRegistry corsRegistry){
+    public void addCorsMappings(CorsRegistry corsRegistry) {
         corsRegistry.addMapping("/api/auth/signIn")
                 .allowedHeaders("*")
                 .allowedMethods("POST")
@@ -22,17 +22,5 @@ public class CorsConfiguration implements WebMvcConfigurer {
                 .allowedHeaders("*")
                 .allowedMethods("POST")
                 .allowedOrigins("*");
-        corsRegistry.addMapping("/api/company/create")
-                .allowedHeaders("*")
-                .allowedMethods("POST")
-                .allowedOrigins("http://localhost:3000");
-        corsRegistry.addMapping("/api/company/readByUsername")
-                .allowedHeaders("*")
-                .allowedMethods("GET")
-                .allowedOrigins("http://localhost:3000");
-        corsRegistry.addMapping("/api/company/deleteByCompanyName")
-                .allowedHeaders("*")
-                .allowedMethods("DELETE")
-                .allowedOrigins("http://localhost:3000");
     }
 }

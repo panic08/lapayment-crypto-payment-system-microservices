@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import ru.panic.withdrawalservice.generatedClasses.tables.ClientsTable;
 import ru.panic.withdrawalservice.template.entity.Client;
 import ru.panic.withdrawalservice.template.repository.ClientRepository;
+
 @Repository
 public class ClientRepositoryImpl implements ClientRepository {
     public ClientRepositoryImpl(DSLContext dslContext) {
@@ -18,4 +19,5 @@ public class ClientRepositoryImpl implements ClientRepository {
                 .where(ClientsTable.CLIENTS_TABLE.USERNAME.eq(username))
                 .fetchOneInto(Client.class);
     }
+
 }

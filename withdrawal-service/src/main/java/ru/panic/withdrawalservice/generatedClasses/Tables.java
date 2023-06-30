@@ -8,6 +8,7 @@ import ru.panic.withdrawalservice.generatedClasses.tables.ClientsTable;
 import ru.panic.withdrawalservice.generatedClasses.tables.CompaniesTable;
 import ru.panic.withdrawalservice.generatedClasses.tables.FlywaySchemaHistory;
 import ru.panic.withdrawalservice.generatedClasses.tables.PaymentsTable;
+import ru.panic.withdrawalservice.generatedClasses.tables.WithdrawalsTable;
 
 
 /**
@@ -35,4 +36,9 @@ public class Tables {
      * The table <code>public.payments_table</code>.
      */
     public static final PaymentsTable PAYMENTS_TABLE = PaymentsTable.PAYMENTS_TABLE;
+
+    /**
+     * The table <code>public.withdrawals_table</code>.
+     */
+    public static final WithdrawalsTable WITHDRAWALS_TABLE = WithdrawalsTable.WITHDRAWALS_TABLE;
 }
