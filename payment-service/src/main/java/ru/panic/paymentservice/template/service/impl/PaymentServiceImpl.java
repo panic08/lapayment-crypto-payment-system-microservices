@@ -43,25 +43,25 @@ public class PaymentServiceImpl implements PaymentService {
         switch (request.getCurrency()){
             case RUB -> {
                 if (request.getAmount() < 200){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения BTC - 200 RUB");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing BTC is 200 RUB");
                 }
             }
 
             case EUR -> {
                 if (request.getAmount() < 2){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения BTC - 2 EUR");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing BTC is 2 EUR");
                 }
             }
 
             case USD -> {
                 if (request.getAmount() < 2){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения BTC - 2 USD");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing BTC is 2 USD");
                 }
             }
 
             case PLN -> {
                 if (request.getAmount() < 9.5){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения BTC - 9.5 PLN");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing BTC is 9.5 PLN");
                 }
             }
         }
@@ -146,25 +146,25 @@ public class PaymentServiceImpl implements PaymentService {
         switch (request.getCurrency()){
             case RUB -> {
                 if (request.getAmount() < 200){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения ETH - 200 RUB");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing ETH is 200 RUB");
                 }
             }
 
             case EUR -> {
                 if (request.getAmount() < 2){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения ETH - 2 EUR");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing ETH is 2 EUR");
                 }
             }
 
             case USD -> {
                 if (request.getAmount() < 2){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения ETH - 2 USD");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing ETH is 2 USD");
                 }
             }
 
             case PLN -> {
                 if (request.getAmount() < 9.5){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения ETH - 9.5 PLN");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing ETH is 9.5 PLN");
                 }
             }
         }
@@ -249,25 +249,25 @@ public class PaymentServiceImpl implements PaymentService {
         switch (request.getCurrency()){
             case RUB -> {
                 if (request.getAmount() < 200){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения LTC - 200 RUB");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing LTC is 200 RUB");
                 }
             }
 
             case EUR -> {
                 if (request.getAmount() < 2){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения LTC - 2 EUR");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing LTC is 2 EUR");
                 }
             }
 
             case USD -> {
                 if (request.getAmount() < 2){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения LTC - 2 USD");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing LTC is 2 USD");
                 }
             }
 
             case PLN -> {
                 if (request.getAmount() < 9.5){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения LTC - 9.5 PLN");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing LTC is 9.5 PLN");
                 }
             }
         }
@@ -351,25 +351,25 @@ public class PaymentServiceImpl implements PaymentService {
         switch (request.getCurrency()){
             case RUB -> {
                 if (request.getAmount() < 100){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения TRX - 100 RUB");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing TRX is 100 RUB");
                 }
             }
 
             case EUR -> {
                 if (request.getAmount() < 1){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения TRX - 1 EUR");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing TRX is 1 EUR");
                 }
             }
 
             case USD -> {
                 if (request.getAmount() < 1){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения TRX - 1 USD");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing TRX is 1 USD");
                 }
             }
 
             case PLN -> {
                 if (request.getAmount() < 5){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения TRX - 5 PLN");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing TRX is 5 PLN");
                 }
             }
         }
@@ -453,25 +453,25 @@ public class PaymentServiceImpl implements PaymentService {
         switch (request.getCurrency()){
             case RUB -> {
                 if (request.getAmount() < 100){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения TON - 100 RUB");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing TON is 100 RUB");
                 }
             }
 
             case EUR -> {
                 if (request.getAmount() < 1){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения TON - 1 EUR");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing TON is 1 EUR");
                 }
             }
 
             case USD -> {
                 if (request.getAmount() < 1){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения TON - 1 USD");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing TON is 1 USD");
                 }
             }
 
             case PLN -> {
                 if (request.getAmount() < 5){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения TON - 5 PLN");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing TON is 5 PLN");
                 }
             }
         }
@@ -561,25 +561,25 @@ public class PaymentServiceImpl implements PaymentService {
         switch (request.getCurrency()){
             case RUB -> {
                 if (request.getAmount() < 100){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения MATIC - 100 RUB");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing MATIC is 100 RUB");
                 }
             }
 
             case EUR -> {
                 if (request.getAmount() < 1){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения MATIC - 1 EUR");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing MATIC is 1 EUR");
                 }
             }
 
             case USD -> {
                 if (request.getAmount() < 1){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения MATIC - 1 USD");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing MATIC is 1 USD");
                 }
             }
 
             case PLN -> {
                 if (request.getAmount() < 5){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения MATIC - 5 PLN");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing MATIC is 5 PLN");
                 }
             }
         }
@@ -662,25 +662,25 @@ public class PaymentServiceImpl implements PaymentService {
         switch (request.getCurrency()){
             case RUB -> {
                 if (request.getAmount() < 100){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения XRP - 100 RUB");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing XRP is 100 RUB");
                 }
             }
 
             case EUR -> {
                 if (request.getAmount() < 1){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения XRP - 1 EUR");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing XRP is 1 EUR");
                 }
             }
 
             case USD -> {
                 if (request.getAmount() < 1){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения XRP - 1 USD");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing XRP is 1 USD");
                 }
             }
 
             case PLN -> {
                 if (request.getAmount() < 5){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения XRP- 5 PLN");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing XRP is 5 PLN");
                 }
             }
         }
@@ -774,25 +774,25 @@ public class PaymentServiceImpl implements PaymentService {
         switch (request.getCurrency()){
             case RUB -> {
                 if (request.getAmount() < 200){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения TETHER-ERC20 - 200 RUB");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing TETHER-ERC20 is 200 RUB");
                 }
             }
 
             case EUR -> {
                 if (request.getAmount() < 2){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения TETHER-ERC20 - 2 EUR");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing TETHER-ERC20 is 2 EUR");
                 }
             }
 
             case USD -> {
                 if (request.getAmount() < 2){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения TETHER-ERC20 - 2 USD");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing TETHER-ERC20 is 2 USD");
                 }
             }
 
             case PLN -> {
                 if (request.getAmount() < 9.5){
-                    throw new AmountBelowMinimumException("Минимальная сумма для пополнения TETHER-ERC20 - 9.5 PLN");
+                    throw new AmountBelowMinimumException("The minimum amount for depositing TETHER-ERC20 is 9.5 PLN");
                 }
             }
         }

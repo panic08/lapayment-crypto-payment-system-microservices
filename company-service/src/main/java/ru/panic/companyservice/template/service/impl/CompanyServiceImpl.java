@@ -28,12 +28,12 @@ public class CompanyServiceImpl implements CompanyService {
     public List<Company> readAllCompanyByOwner(String jwtToken) {
         ResponseEntity<Client> clientResponseEntity =
                 restTemplate.postForEntity(
-                        "http://localhost:8080/api/auth/getInfoByJwt?jwtToken=" + jwtToken,
+                        "http://localhost:80/api/auth/getInfoByJwt?jwtToken=" + jwtToken,
                         null,
                         Client.class
                 );
         if (clientResponseEntity.getStatusCode().isError()){
-            throw new InvalidCredentialsException("Некорректный JWT токен");
+            throw new InvalidCredentialsException("Incorrect JWT token");
         }
 
         return companyRepository.findAllCompanyByOwner(clientResponseEntity.getBody().getUsername());
@@ -43,21 +43,21 @@ public class CompanyServiceImpl implements CompanyService {
     public CreateCompanyResponse createCompany(String jwtToken, CreateCompanyRequest companyRequest) {
         ResponseEntity<Client> clientResponseEntity =
                 restTemplate.postForEntity(
-                        "http://localhost:8080/api/auth/getInfoByJwt?jwtToken=" + jwtToken,
+                        "http://localhost:80/api/auth/getInfoByJwt?jwtToken=" + jwtToken,
                         null,
                         Client.class
                 );
         if (clientResponseEntity.getStatusCode().isError()){
-            throw new InvalidCredentialsException("Некорректный JWT токен");
+            throw new InvalidCredentialsException("Incorrect JWT token");
         }
 
         if (companyRequest.getCompanyName().length() < 5){
-            throw new InvalidCredentialsException("Компания может содержать название только от 5 символов");
+            throw new InvalidCredentialsException("The company name can contain only 5 characters or more");
         }
 
 
         if (companyRepository.extendedByCompanyName(companyRequest.getCompanyName())){
-            throw new CompanyWasFoundedException("Компания с таким названием уже существует");
+            throw new CompanyWasFoundedException("A company with the same name already exists");
         }
 
         Company company = new Company();
@@ -83,16 +83,16 @@ public class CompanyServiceImpl implements CompanyService {
     public void deleteCompany(String jwtToken, Company company) {
         ResponseEntity<Client> clientResponseEntity =
                 restTemplate.postForEntity(
-                        "http://localhost:8080/api/auth/getInfoByJwt?jwtToken=" + jwtToken,
+                        "http://localhost:80/api/auth/getInfoByJwt?jwtToken=" + jwtToken,
                         null,
                         Client.class
                 );
         if (clientResponseEntity.getStatusCode().isError()){
-            throw new InvalidCredentialsException("Некорректный JWT токен");
+            throw new InvalidCredentialsException("Incorrect JWT token");
         }
 
         if (!clientResponseEntity.getBody().getUsername().equals(company.getOwner())){
-            throw new InvalidCredentialsException("Вы не можете удалить эту компанию");
+            throw new InvalidCredentialsException("You cannot delete this company");
         }
 
         companyRepository.delete(company);

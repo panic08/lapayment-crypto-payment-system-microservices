@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface WithdrawalService {
     CreateWithdrawalResponse createWithdrawal(String jwtToken, CreateWithdrawalRequest request);
-    List<Withdrawal> readAllWithdrawalByUsername(String jwtToken);
+    List<Withdrawal> readAllWithdrawalByClientUsername(String jwtToken);
     void deleteWithdrawal(String jwtToken, Withdrawal withdrawal);
 }

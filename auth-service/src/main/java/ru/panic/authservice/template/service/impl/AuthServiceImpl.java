@@ -26,7 +26,7 @@ public class AuthServiceImpl implements AuthService {
         Client client = clientRepository.findByUsername(signInRequest.getUsername());
 
         if (client == null || !passwordEncoder.matches(client.getPassword(), signInRequest.getPassword())){
-            throw new InvalidCredentialsException("Неверный логин или пароль");
+            throw new InvalidCredentialsException("Wrong login or password");
         }
 
         SignInResponse signInResponse = new SignInResponse();
@@ -41,7 +41,7 @@ public class AuthServiceImpl implements AuthService {
         Client client = clientRepository.findByUsername(signUpRequest.getUsername());
 
         if (client != null){
-            throw new InvalidCredentialsException("Данный пользователь уже существует");
+            throw new InvalidCredentialsException("This user already exists");
         }
 
         Client client1 = new Client();
@@ -70,7 +70,7 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public Client getInfoByJwt(String jwtToken) {
         if (!jwtUtil.isJwtValid(jwtToken) || jwtUtil.isTokenExpired(jwtToken)){
-            throw new InvalidCredentialsException("Неверный JWT токен");
+            throw new InvalidCredentialsException("Invalid JWT token");
         }
 
         return clientRepository.findByUsername(jwtUtil.extractUsername(jwtToken));

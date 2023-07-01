@@ -10,7 +10,7 @@ import ru.panic.paymentservice.template.dto.PaymentResponse;
 import ru.panic.paymentservice.template.service.impl.PaymentServiceImpl;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/payment")
 @Slf4j
 public class PaymentController {
     public PaymentController(PaymentServiceImpl paymentService) {

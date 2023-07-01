@@ -1,16 +1,16 @@
-package ru.panic.companyservice.configuration;
+package ru.panic.withdrawalservice.configuration;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-@RestController
-@RequestMapping("/api/company")
+@Configuration
+@EnableWebMvc
 public class CorsConfiguration implements WebMvcConfigurer {
     @Override
-    public void addCorsMappings(CorsRegistry corsRegistry) {
-        corsRegistry.addMapping("/api/company/**")
+    public void addCorsMappings(CorsRegistry corsRegistry){
+        corsRegistry.addMapping("/api/withdrawal/**")
                 .allowedHeaders("*")
                 .allowedMethods("POST")
                 .allowedOrigins("http://localhost:80");

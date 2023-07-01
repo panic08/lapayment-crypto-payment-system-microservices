@@ -13,11 +13,11 @@ public class CorsConfiguration implements WebMvcConfigurer {
         corsRegistry.addMapping("/api/auth/signIn")
                 .allowedHeaders("*")
                 .allowedMethods("POST")
-                .allowedOrigins("http://localhost:3000");
+                .allowedOrigins("http://localhost:80");
         corsRegistry.addMapping("/api/auth/signUp")
                 .allowedHeaders("*")
                 .allowedMethods("POST")
-                .allowedOrigins("http://localhost:3000");
+                .allowedOrigins("http://localhost:80");
         corsRegistry.addMapping("/api/auth/getInfoByJwt")
                 .allowedHeaders("*")
                 .allowedMethods("POST")

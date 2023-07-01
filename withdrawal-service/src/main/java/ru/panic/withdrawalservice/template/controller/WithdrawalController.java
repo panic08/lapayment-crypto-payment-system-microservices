@@ -16,9 +16,9 @@ public class WithdrawalController {
     }
 
     private final WithdrawalServiceImpl withdrawalService;
-    @GetMapping("/readByUsername")
-    private List<Withdrawal> readAllWithdrawalByUsername(@RequestHeader String jwtToken){
-        return withdrawalService.readAllWithdrawalByUsername(jwtToken);
+    @GetMapping("/readAllByClientUsername")
+    private List<Withdrawal> readAllWithdrawalByClientUsername(@RequestHeader String jwtToken){
+        return withdrawalService.readAllWithdrawalByClientUsername(jwtToken);
     }
     @PostMapping("/create")
     private CreateWithdrawalResponse createWithdrawal(

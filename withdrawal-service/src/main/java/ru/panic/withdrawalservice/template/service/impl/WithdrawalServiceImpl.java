@@ -33,12 +33,12 @@ public class WithdrawalServiceImpl implements WithdrawalService {
     @Override
     public CreateWithdrawalResponse createWithdrawal(String jwtToken, CreateWithdrawalRequest request) {
         ResponseEntity<Client> clientResponseEntity = restTemplate.postForEntity(
-                "http://localhost:8080/api/auth/getInfoByJwt?jwtToken=" + jwtToken,
+                "http://localhost:80/api/auth/getInfoByJwt?jwtToken=" + jwtToken,
                 null,
                 Client.class
         );
         if (clientResponseEntity.getStatusCode().isError()){
-            throw new InvalidCredentialsException("Неверный jwtToken");
+            throw new InvalidCredentialsException("Invalid JWT token");
         }
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -48,66 +48,66 @@ public class WithdrawalServiceImpl implements WithdrawalService {
         switch (request.getCurrency()){
             case BTC -> {
                 if (client.getBtc_balance() < request.getAmount()){
-                    throw new InvalidCredentialsException("Недостаточно средств для вывода");
+                    throw new InvalidCredentialsException("Insufficient funds to withdraw");
                 }
                 if (request.getAmount() < 0.000076){
-                    throw new InvalidCredentialsException("Вывести средства на адрес BTC можно только от 0.000076 BTC");
+                    throw new InvalidCredentialsException("You can withdraw funds to a BTC address only from 0.000076 BTC");
                 }
             }
             case ETH -> {
                 if (client.getEth_balance() < request.getAmount()){
-                    throw new InvalidCredentialsException("Недостаточно средств для вывода");
+                    throw new InvalidCredentialsException("Insufficient funds to withdraw");
                 }
                 if (request.getAmount() < 0.0012){
-                    throw new InvalidCredentialsException("Вывести средства на адрес ETH можно только от 0.0012 ETH");
+                    throw new InvalidCredentialsException("You can withdraw funds to a ETH address only from 0.0012 ETH");
                 }
             }
             case LTC -> {
                 if (client.getLtc_balance() < request.getAmount()){
-                    throw new InvalidCredentialsException("Недостаточно средств для вывода");
+                    throw new InvalidCredentialsException("Insufficient funds to withdraw");
                 }
                 if (request.getAmount() < 0.027){
-                    throw new InvalidCredentialsException("Вывести средства на адрес LTC можно только от 0.027 LTC");
+                    throw new InvalidCredentialsException("You can withdraw funds to a LTC address only from 0.027 LTC");
                 }
             }
             case TON -> {
                 if (client.getTon_balance() < request.getAmount()){
-                    throw new InvalidCredentialsException("Недостаточно средств для вывода");
+                    throw new InvalidCredentialsException("Insufficient funds to withdraw");
                 }
                 if (request.getAmount() < 0.85){
-                    throw new InvalidCredentialsException("Вывести средства на адрес TON можно только от 0.85 TON");
+                    throw new InvalidCredentialsException("You can withdraw funds to a TON address only from 0.85 TON");
                 }
             }
             case TRX -> {
                 if (client.getTrx_balance() < request.getAmount()){
-                    throw new InvalidCredentialsException("Недостаточно средств для вывода");
+                    throw new InvalidCredentialsException("Insufficient funds to withdraw");
                 }
                 if (request.getAmount() < 15.4){
-                    throw new InvalidCredentialsException("Вывести средства на адрес TRX можно только от 15.4 TRX");
+                    throw new InvalidCredentialsException("You can withdraw funds to a TRX address only from 15.4 TRX");
                 }
             }
             case XRP -> {
                 if (client.getXrp_balance() < request.getAmount()){
-                    throw new InvalidCredentialsException("Недостаточно средств для вывода");
+                    throw new InvalidCredentialsException("Insufficient funds to withdraw");
                 }
                 if (request.getAmount() < 2.4){
-                    throw new InvalidCredentialsException("Вывести средства на адрес XRP можно только от 2.4 XRP");
+                    throw new InvalidCredentialsException("You can withdraw funds to a XRP address only from 2.4 XRP");
                 }
             }
             case MATIC -> {
                 if (client.getMatic_balance() < request.getAmount()){
-                    throw new InvalidCredentialsException("Недостаточно средств для вывода");
+                    throw new InvalidCredentialsException("Insufficient funds to withdraw");
                 }
                 if (request.getAmount() < 1.85){
-                    throw new InvalidCredentialsException("Вывести средства на адрес MATIC можно только от 1.85 MATIC");
+                    throw new InvalidCredentialsException("You can withdraw funds to a MATIC address only from 1.85 MATIC");
                 }
             }
             case TETHER_ERC20 -> {
                 if (client.getTetherERC20_balance() < request.getAmount()){
-                    throw new InvalidCredentialsException("Недостаточно средств для вывода");
+                    throw new InvalidCredentialsException("Insufficient funds to withdraw");
                 }
                 if (request.getAmount() < 2.3){
-                    throw new InvalidCredentialsException("Вывести средства на адрес TETHER ERC-20 можно только от 2.3 TETHER");
+                    throw new InvalidCredentialsException("You can withdraw funds to a TETHER-ERC20 address only from 2.3 TETHER");
                 }
             }
         }
@@ -131,14 +131,14 @@ public class WithdrawalServiceImpl implements WithdrawalService {
     }
 
     @Override
-    public List<Withdrawal> readAllWithdrawalByUsername(String jwtToken) {
+    public List<Withdrawal> readAllWithdrawalByClientUsername(String jwtToken) {
         ResponseEntity<Client> clientResponseEntity = restTemplate.postForEntity(
-                "http://localhost:8080/api/auth/getInfoByJwt?jwtToken=" + jwtToken,
+                "http://localhost:80/api/auth/getInfoByJwt?jwtToken=" + jwtToken,
                 null,
                 Client.class
         );
         if (clientResponseEntity.getStatusCode().isError()){
-            throw new InvalidCredentialsException("Неверный jwtToken");
+            throw new InvalidCredentialsException("Invalid JWT token");
         }
 
         return withdrawalRepository.findAllWithdrawalByClientUsername(clientResponseEntity.getBody().getUsername());
@@ -147,16 +147,16 @@ public class WithdrawalServiceImpl implements WithdrawalService {
     @Override
     public void deleteWithdrawal(String jwtToken, Withdrawal withdrawal) {
         ResponseEntity<Client> clientResponseEntity = restTemplate.postForEntity(
-                "http://localhost:8080/api/auth/getInfoByJwt?jwtToken=" + jwtToken,
+                "http://localhost:80/api/auth/getInfoByJwt?jwtToken=" + jwtToken,
                 null,
                 Client.class
         );
         if (clientResponseEntity.getStatusCode().isError()){
-            throw new InvalidCredentialsException("Неверный jwtToken");
+            throw new InvalidCredentialsException("Invalid JWT token");
         }
 
         if (!clientResponseEntity.getBody().getUsername().equals(withdrawal.getClientUsername())){
-            throw new InvalidCredentialsException("Вы не можете отменить данный вывод");
+            throw new InvalidCredentialsException("You cannot undo this withdrawal");
         }
 
         withdrawalRepository.deleteWithdrawalById(withdrawal.getId());

@@ -3,9 +3,11 @@ package ru.panic.managementpaymentservice.template.listener;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.stereotype.Component;
 import ru.panic.managementpaymentservice.template.dto.PaymentMessage;
 import ru.panic.managementpaymentservice.template.service.impl.PaymentServiceImpl;
 
+@Component
 @RabbitListener(queues = "payment-queue")
 public class PaymentRabbitListener {
     public PaymentRabbitListener(PaymentServiceImpl paymentService) {
